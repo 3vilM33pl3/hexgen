@@ -1,0 +1,9 @@
+name = "HexWorld"
+uuid = "c68b7966-7f61-45c6-b588-73a61fe1a7e1"
+authors = ["3vilM33pl3 <ovanac01@mail.bbk.ac.uk>"]
+version = "0.1.0"
+
+[deps]
+JuliaFormatter = "98e50ef6-434e-11e9-1051-2b60c6c9e899"
+LanguageServer = "2b0e0bc5-e4fd-59b4-8912-456d1b03d8d7"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

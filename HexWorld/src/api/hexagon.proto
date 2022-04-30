@@ -1,0 +1,72 @@
+syntax="proto3";
+
+option cc_generic_services = true;
+
+package hexcloud;
+
+message Empty {}
+
+message HexLocation {
+    int64 X = 1;
+    int64 Y = 2;
+    int64 Z = 3;
+    Direction Direction = 4;
+    string HexID = 5;
+}
+
+enum Direction {
+    N = 0;
+    NE = 1;
+    E = 2;
+    SE = 3;
+    S = 4;
+    SW = 5;
+    W = 6;
+    NW = 7;
+}
+
+message HexInfo {
+    string ID = 1;
+    uint32 Exits = 2;
+}
+
+message HexInfoList {
+    repeated HexInfo hexInfo = 1;
+}
+
+message HexLocationList {
+    repeated HexLocation hexLoc = 1;
+}
+
+message HexagonGetRequest {
+    HexLocation hexLoc = 1;
+    int64 radius = 2;
+    bool fill = 3;
+}
+
+message HexIDList {
+    repeated string HexID = 1;
+}
+
+message Status {
+    string msg = 1;
+}
+
+message Result {
+    bool success = 1;
+}
+
+service HexagonService {
+    rpc RepoAddHexagonInfo(HexInfoList) returns(Result);
+    rpc RepoDelHexagonInfo(HexIDList) returns(Result);
+    rpc RepoGetHexagonInfo(HexIDList) returns(HexInfoList);
+    rpc RepoGetAllHexagonInfo(Empty) returns(HexInfoList);
+
+    rpc MapAdd(HexLocation) returns (Result);
+    rpc MapGet(HexagonGetRequest) returns (HexLocationList);
+    rpc MapRemove(HexLocationList) returns(Result);
+
+    rpc GetStatusServer(Empty) returns(Status);
+    rpc GetStatusStorage(Empty) returns(Status);
+    rpc GetStatusClients(Empty) returns(Status);
+}
