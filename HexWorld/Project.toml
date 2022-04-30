@@ -6,4 +6,6 @@ version = "0.1.0"
 [deps]
 JuliaFormatter = "98e50ef6-434e-11e9-1051-2b60c6c9e899"
 LanguageServer = "2b0e0bc5-e4fd-59b4-8912-456d1b03d8d7"
+ProtoBuf = "3349acd9-ac6a-5e09-bcdb-63829b23a429"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+gRPCClient = "aaca4a50-36af-4a1d-b878-4c443f2061ad"
