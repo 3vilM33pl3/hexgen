@@ -49,16 +49,6 @@ import .hexcloud: RepoAddHexagonInfo
 RepoAddHexagonInfo(client::HexagonServiceBlockingClient, inp::hexcloud.HexInfoList) = RepoAddHexagonInfo(client.stub, client.controller, inp)
 RepoAddHexagonInfo(client::HexagonServiceClient, inp::hexcloud.HexInfoList, done::Function) = RepoAddHexagonInfo(client.stub, client.controller, inp, done)
 
-import .hexcloud: RepoDelHexagonInfo
-"""
-    RepoDelHexagonInfo
-
-- input: hexcloud.HexIDList
-- output: hexcloud.Result
-"""
-RepoDelHexagonInfo(client::HexagonServiceBlockingClient, inp::hexcloud.HexIDList) = RepoDelHexagonInfo(client.stub, client.controller, inp)
-RepoDelHexagonInfo(client::HexagonServiceClient, inp::hexcloud.HexIDList, done::Function) = RepoDelHexagonInfo(client.stub, client.controller, inp, done)
-
 import .hexcloud: RepoGetHexagonInfo
 """
     RepoGetHexagonInfo
@@ -68,6 +58,16 @@ import .hexcloud: RepoGetHexagonInfo
 """
 RepoGetHexagonInfo(client::HexagonServiceBlockingClient, inp::hexcloud.HexIDList) = RepoGetHexagonInfo(client.stub, client.controller, inp)
 RepoGetHexagonInfo(client::HexagonServiceClient, inp::hexcloud.HexIDList, done::Function) = RepoGetHexagonInfo(client.stub, client.controller, inp, done)
+
+import .hexcloud: RepoGetHexagonInfoData
+"""
+    RepoGetHexagonInfoData
+
+- input: hexcloud.HexIDData
+- output: hexcloud.HexIDData
+"""
+RepoGetHexagonInfoData(client::HexagonServiceBlockingClient, inp::hexcloud.HexIDData) = RepoGetHexagonInfoData(client.stub, client.controller, inp)
+RepoGetHexagonInfoData(client::HexagonServiceClient, inp::hexcloud.HexIDData, done::Function) = RepoGetHexagonInfoData(client.stub, client.controller, inp, done)
 
 import .hexcloud: RepoGetAllHexagonInfo
 """
@@ -79,15 +79,45 @@ import .hexcloud: RepoGetAllHexagonInfo
 RepoGetAllHexagonInfo(client::HexagonServiceBlockingClient, inp::hexcloud.Empty) = RepoGetAllHexagonInfo(client.stub, client.controller, inp)
 RepoGetAllHexagonInfo(client::HexagonServiceClient, inp::hexcloud.Empty, done::Function) = RepoGetAllHexagonInfo(client.stub, client.controller, inp, done)
 
+import .hexcloud: RepoDelHexagonInfo
+"""
+    RepoDelHexagonInfo
+
+- input: hexcloud.HexIDList
+- output: hexcloud.Result
+"""
+RepoDelHexagonInfo(client::HexagonServiceBlockingClient, inp::hexcloud.HexIDList) = RepoDelHexagonInfo(client.stub, client.controller, inp)
+RepoDelHexagonInfo(client::HexagonServiceClient, inp::hexcloud.HexIDList, done::Function) = RepoDelHexagonInfo(client.stub, client.controller, inp, done)
+
+import .hexcloud: RepoDelHexagonInfoData
+"""
+    RepoDelHexagonInfoData
+
+- input: hexcloud.HexIDData
+- output: hexcloud.Result
+"""
+RepoDelHexagonInfoData(client::HexagonServiceBlockingClient, inp::hexcloud.HexIDData) = RepoDelHexagonInfoData(client.stub, client.controller, inp)
+RepoDelHexagonInfoData(client::HexagonServiceClient, inp::hexcloud.HexIDData, done::Function) = RepoDelHexagonInfoData(client.stub, client.controller, inp, done)
+
 import .hexcloud: MapAdd
 """
     MapAdd
 
-- input: hexcloud.HexLocation
+- input: hexcloud.HexLocationList
 - output: hexcloud.Result
 """
-MapAdd(client::HexagonServiceBlockingClient, inp::hexcloud.HexLocation) = MapAdd(client.stub, client.controller, inp)
-MapAdd(client::HexagonServiceClient, inp::hexcloud.HexLocation, done::Function) = MapAdd(client.stub, client.controller, inp, done)
+MapAdd(client::HexagonServiceBlockingClient, inp::hexcloud.HexLocationList) = MapAdd(client.stub, client.controller, inp)
+MapAdd(client::HexagonServiceClient, inp::hexcloud.HexLocationList, done::Function) = MapAdd(client.stub, client.controller, inp, done)
+
+import .hexcloud: MapAddData
+"""
+    MapAddData
+
+- input: hexcloud.HexLocData
+- output: hexcloud.Result
+"""
+MapAddData(client::HexagonServiceBlockingClient, inp::hexcloud.HexLocData) = MapAddData(client.stub, client.controller, inp)
+MapAddData(client::HexagonServiceClient, inp::hexcloud.HexLocData, done::Function) = MapAddData(client.stub, client.controller, inp, done)
 
 import .hexcloud: MapGet
 """
@@ -99,6 +129,26 @@ import .hexcloud: MapGet
 MapGet(client::HexagonServiceBlockingClient, inp::hexcloud.HexagonGetRequest) = MapGet(client.stub, client.controller, inp)
 MapGet(client::HexagonServiceClient, inp::hexcloud.HexagonGetRequest, done::Function) = MapGet(client.stub, client.controller, inp, done)
 
+import .hexcloud: MapUpdate
+"""
+    MapUpdate
+
+- input: hexcloud.HexLocation
+- output: hexcloud.Result
+"""
+MapUpdate(client::HexagonServiceBlockingClient, inp::hexcloud.HexLocation) = MapUpdate(client.stub, client.controller, inp)
+MapUpdate(client::HexagonServiceClient, inp::hexcloud.HexLocation, done::Function) = MapUpdate(client.stub, client.controller, inp, done)
+
+import .hexcloud: MapUpdateData
+"""
+    MapUpdateData
+
+- input: hexcloud.HexLocation
+- output: hexcloud.Result
+"""
+MapUpdateData(client::HexagonServiceBlockingClient, inp::hexcloud.HexLocation) = MapUpdateData(client.stub, client.controller, inp)
+MapUpdateData(client::HexagonServiceClient, inp::hexcloud.HexLocation, done::Function) = MapUpdateData(client.stub, client.controller, inp, done)
+
 import .hexcloud: MapRemove
 """
     MapRemove
@@ -108,6 +158,16 @@ import .hexcloud: MapRemove
 """
 MapRemove(client::HexagonServiceBlockingClient, inp::hexcloud.HexLocationList) = MapRemove(client.stub, client.controller, inp)
 MapRemove(client::HexagonServiceClient, inp::hexcloud.HexLocationList, done::Function) = MapRemove(client.stub, client.controller, inp, done)
+
+import .hexcloud: MapRemoveData
+"""
+    MapRemoveData
+
+- input: hexcloud.HexLocation
+- output: hexcloud.Result
+"""
+MapRemoveData(client::HexagonServiceBlockingClient, inp::hexcloud.HexLocation) = MapRemoveData(client.stub, client.controller, inp)
+MapRemoveData(client::HexagonServiceClient, inp::hexcloud.HexLocation, done::Function) = MapRemoveData(client.stub, client.controller, inp, done)
 
 import .hexcloud: GetStatusServer
 """

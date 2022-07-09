@@ -2,17 +2,6 @@
 using ProtoBuf
 import ProtoBuf.meta
 
-const Direction = (;[
-    Symbol("N") => Int32(0),
-    Symbol("NE") => Int32(1),
-    Symbol("E") => Int32(2),
-    Symbol("SE") => Int32(3),
-    Symbol("S") => Int32(4),
-    Symbol("SW") => Int32(5),
-    Symbol("W") => Int32(6),
-    Symbol("NW") => Int32(7),
-]...)
-
 mutable struct Empty <: ProtoType
     __protobuf_jl_internal_meta::ProtoMeta
     __protobuf_jl_internal_values::Dict{Symbol,Any}
@@ -45,6 +34,88 @@ function meta(::Type{Empty})
     end
 end
 
+mutable struct HexLocation_LocalDataEntry <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function HexLocation_LocalDataEntry(; kwargs...)
+        obj = new(meta(HexLocation_LocalDataEntry), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct HexLocation_LocalDataEntry (mapentry)
+const __meta_HexLocation_LocalDataEntry = Ref{ProtoMeta}()
+function meta(::Type{HexLocation_LocalDataEntry})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_HexLocation_LocalDataEntry)
+            __meta_HexLocation_LocalDataEntry[] = target = ProtoMeta(HexLocation_LocalDataEntry)
+            allflds = Pair{Symbol,Union{Type,String}}[:key => AbstractString, :value => AbstractString]
+            meta(target, HexLocation_LocalDataEntry, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_HexLocation_LocalDataEntry[]
+    end
+end
+function Base.getproperty(obj::HexLocation_LocalDataEntry, name::Symbol)
+    if name === :key
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :value
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    else
+        getfield(obj, name)
+    end
+end
+
+mutable struct HexLocation_GlobalDataEntry <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function HexLocation_GlobalDataEntry(; kwargs...)
+        obj = new(meta(HexLocation_GlobalDataEntry), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct HexLocation_GlobalDataEntry (mapentry)
+const __meta_HexLocation_GlobalDataEntry = Ref{ProtoMeta}()
+function meta(::Type{HexLocation_GlobalDataEntry})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_HexLocation_GlobalDataEntry)
+            __meta_HexLocation_GlobalDataEntry[] = target = ProtoMeta(HexLocation_GlobalDataEntry)
+            allflds = Pair{Symbol,Union{Type,String}}[:key => AbstractString, :value => AbstractString]
+            meta(target, HexLocation_GlobalDataEntry, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_HexLocation_GlobalDataEntry[]
+    end
+end
+function Base.getproperty(obj::HexLocation_GlobalDataEntry, name::Symbol)
+    if name === :key
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :value
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    else
+        getfield(obj, name)
+    end
+end
+
 mutable struct HexLocation <: ProtoType
     __protobuf_jl_internal_meta::ProtoMeta
     __protobuf_jl_internal_values::Dict{Symbol,Any}
@@ -70,8 +141,9 @@ function meta(::Type{HexLocation})
     ProtoBuf.metalock() do
         if !isassigned(__meta_HexLocation)
             __meta_HexLocation[] = target = ProtoMeta(HexLocation)
-            allflds = Pair{Symbol,Union{Type,String}}[:X => Int64, :Y => Int64, :Z => Int64, :Direction => Int32, :HexID => AbstractString]
-            meta(target, HexLocation, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+            fnum = Int[1,2,3,5,6,7]
+            allflds = Pair{Symbol,Union{Type,String}}[:X => Int64, :Y => Int64, :Z => Int64, :HexID => AbstractString, :LocalData => Base.Dict{AbstractString,AbstractString}, :GlobalData => Base.Dict{AbstractString,AbstractString}]
+            meta(target, HexLocation, allflds, ProtoBuf.DEF_REQ, fnum, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
         end
         __meta_HexLocation[]
     end
@@ -83,9 +155,52 @@ function Base.getproperty(obj::HexLocation, name::Symbol)
         return (obj.__protobuf_jl_internal_values[name])::Int64
     elseif name === :Z
         return (obj.__protobuf_jl_internal_values[name])::Int64
-    elseif name === :Direction
-        return (obj.__protobuf_jl_internal_values[name])::Int32
     elseif name === :HexID
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :LocalData
+        return (obj.__protobuf_jl_internal_values[name])::Base.Dict{AbstractString,AbstractString}
+    elseif name === :GlobalData
+        return (obj.__protobuf_jl_internal_values[name])::Base.Dict{AbstractString,AbstractString}
+    else
+        getfield(obj, name)
+    end
+end
+
+mutable struct HexInfo_DataEntry <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function HexInfo_DataEntry(; kwargs...)
+        obj = new(meta(HexInfo_DataEntry), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct HexInfo_DataEntry (mapentry)
+const __meta_HexInfo_DataEntry = Ref{ProtoMeta}()
+function meta(::Type{HexInfo_DataEntry})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_HexInfo_DataEntry)
+            __meta_HexInfo_DataEntry[] = target = ProtoMeta(HexInfo_DataEntry)
+            allflds = Pair{Symbol,Union{Type,String}}[:key => AbstractString, :value => AbstractString]
+            meta(target, HexInfo_DataEntry, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_HexInfo_DataEntry[]
+    end
+end
+function Base.getproperty(obj::HexInfo_DataEntry, name::Symbol)
+    if name === :key
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :value
         return (obj.__protobuf_jl_internal_values[name])::AbstractString
     else
         getfield(obj, name)
@@ -117,7 +232,7 @@ function meta(::Type{HexInfo})
     ProtoBuf.metalock() do
         if !isassigned(__meta_HexInfo)
             __meta_HexInfo[] = target = ProtoMeta(HexInfo)
-            allflds = Pair{Symbol,Union{Type,String}}[:ID => AbstractString, :Exits => UInt32]
+            allflds = Pair{Symbol,Union{Type,String}}[:ID => AbstractString, :Data => Base.Dict{AbstractString,AbstractString}]
             meta(target, HexInfo, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
         end
         __meta_HexInfo[]
@@ -126,8 +241,8 @@ end
 function Base.getproperty(obj::HexInfo, name::Symbol)
     if name === :ID
         return (obj.__protobuf_jl_internal_values[name])::AbstractString
-    elseif name === :Exits
-        return (obj.__protobuf_jl_internal_values[name])::UInt32
+    elseif name === :Data
+        return (obj.__protobuf_jl_internal_values[name])::Base.Dict{AbstractString,AbstractString}
     else
         getfield(obj, name)
     end
@@ -293,6 +408,96 @@ function Base.getproperty(obj::HexIDList, name::Symbol)
     end
 end
 
+mutable struct HexIDData <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function HexIDData(; kwargs...)
+        obj = new(meta(HexIDData), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct HexIDData
+const __meta_HexIDData = Ref{ProtoMeta}()
+function meta(::Type{HexIDData})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_HexIDData)
+            __meta_HexIDData[] = target = ProtoMeta(HexIDData)
+            allflds = Pair{Symbol,Union{Type,String}}[:HexID => AbstractString, :dataKey => AbstractString, :value => AbstractString]
+            meta(target, HexIDData, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_HexIDData[]
+    end
+end
+function Base.getproperty(obj::HexIDData, name::Symbol)
+    if name === :HexID
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :dataKey
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :value
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    else
+        getfield(obj, name)
+    end
+end
+
+mutable struct HexLocData <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function HexLocData(; kwargs...)
+        obj = new(meta(HexLocData), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct HexLocData
+const __meta_HexLocData = Ref{ProtoMeta}()
+function meta(::Type{HexLocData})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_HexLocData)
+            __meta_HexLocData[] = target = ProtoMeta(HexLocData)
+            allflds = Pair{Symbol,Union{Type,String}}[:X => Int64, :Y => Int64, :Z => Int64, :dataKey => AbstractString, :value => AbstractString]
+            meta(target, HexLocData, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_HexLocData[]
+    end
+end
+function Base.getproperty(obj::HexLocData, name::Symbol)
+    if name === :X
+        return (obj.__protobuf_jl_internal_values[name])::Int64
+    elseif name === :Y
+        return (obj.__protobuf_jl_internal_values[name])::Int64
+    elseif name === :Z
+        return (obj.__protobuf_jl_internal_values[name])::Int64
+    elseif name === :dataKey
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :value
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    else
+        getfield(obj, name)
+    end
+end
+
 mutable struct Status <: ProtoType
     __protobuf_jl_internal_meta::ProtoMeta
     __protobuf_jl_internal_values::Dict{Symbol,Any}
@@ -374,15 +579,21 @@ end
 # service methods for HexagonService
 const _HexagonService_methods = MethodDescriptor[
         MethodDescriptor("RepoAddHexagonInfo", 1, HexInfoList, Result),
-        MethodDescriptor("RepoDelHexagonInfo", 2, HexIDList, Result),
-        MethodDescriptor("RepoGetHexagonInfo", 3, HexIDList, HexInfoList),
+        MethodDescriptor("RepoGetHexagonInfo", 2, HexIDList, HexInfoList),
+        MethodDescriptor("RepoGetHexagonInfoData", 3, HexIDData, HexIDData),
         MethodDescriptor("RepoGetAllHexagonInfo", 4, Empty, HexInfoList),
-        MethodDescriptor("MapAdd", 5, HexLocation, Result),
-        MethodDescriptor("MapGet", 6, HexagonGetRequest, HexLocationList),
-        MethodDescriptor("MapRemove", 7, HexLocationList, Result),
-        MethodDescriptor("GetStatusServer", 8, Empty, Status),
-        MethodDescriptor("GetStatusStorage", 9, Empty, Status),
-        MethodDescriptor("GetStatusClients", 10, Empty, Status)
+        MethodDescriptor("RepoDelHexagonInfo", 5, HexIDList, Result),
+        MethodDescriptor("RepoDelHexagonInfoData", 6, HexIDData, Result),
+        MethodDescriptor("MapAdd", 7, HexLocationList, Result),
+        MethodDescriptor("MapAddData", 8, HexLocData, Result),
+        MethodDescriptor("MapGet", 9, HexagonGetRequest, HexLocationList),
+        MethodDescriptor("MapUpdate", 10, HexLocation, Result),
+        MethodDescriptor("MapUpdateData", 11, HexLocation, Result),
+        MethodDescriptor("MapRemove", 12, HexLocationList, Result),
+        MethodDescriptor("MapRemoveData", 13, HexLocation, Result),
+        MethodDescriptor("GetStatusServer", 14, Empty, Status),
+        MethodDescriptor("GetStatusStorage", 15, Empty, Status),
+        MethodDescriptor("GetStatusClients", 16, Empty, Status)
     ] # const _HexagonService_methods
 const _HexagonService_desc = ServiceDescriptor("hexcloud.HexagonService", 1, _HexagonService_methods)
 
@@ -401,31 +612,50 @@ end # mutable struct HexagonServiceBlockingStub
 RepoAddHexagonInfo(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexInfoList, done::Function) = call_method(stub.impl, _HexagonService_methods[1], controller, inp, done)
 RepoAddHexagonInfo(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexInfoList) = call_method(stub.impl, _HexagonService_methods[1], controller, inp)
 
-RepoDelHexagonInfo(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexIDList, done::Function) = call_method(stub.impl, _HexagonService_methods[2], controller, inp, done)
-RepoDelHexagonInfo(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexIDList) = call_method(stub.impl, _HexagonService_methods[2], controller, inp)
+RepoGetHexagonInfo(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexIDList, done::Function) = call_method(stub.impl, _HexagonService_methods[2], controller, inp, done)
+RepoGetHexagonInfo(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexIDList) = call_method(stub.impl, _HexagonService_methods[2], controller, inp)
 
-RepoGetHexagonInfo(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexIDList, done::Function) = call_method(stub.impl, _HexagonService_methods[3], controller, inp, done)
-RepoGetHexagonInfo(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexIDList) = call_method(stub.impl, _HexagonService_methods[3], controller, inp)
+RepoGetHexagonInfoData(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexIDData, done::Function) = call_method(stub.impl, _HexagonService_methods[3], controller, inp, done)
+RepoGetHexagonInfoData(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexIDData) = call_method(stub.impl, _HexagonService_methods[3], controller, inp)
 
 RepoGetAllHexagonInfo(stub::HexagonServiceStub, controller::ProtoRpcController, inp::Empty, done::Function) = call_method(stub.impl, _HexagonService_methods[4], controller, inp, done)
 RepoGetAllHexagonInfo(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::Empty) = call_method(stub.impl, _HexagonService_methods[4], controller, inp)
 
-MapAdd(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexLocation, done::Function) = call_method(stub.impl, _HexagonService_methods[5], controller, inp, done)
-MapAdd(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexLocation) = call_method(stub.impl, _HexagonService_methods[5], controller, inp)
+RepoDelHexagonInfo(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexIDList, done::Function) = call_method(stub.impl, _HexagonService_methods[5], controller, inp, done)
+RepoDelHexagonInfo(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexIDList) = call_method(stub.impl, _HexagonService_methods[5], controller, inp)
 
-MapGet(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexagonGetRequest, done::Function) = call_method(stub.impl, _HexagonService_methods[6], controller, inp, done)
-MapGet(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexagonGetRequest) = call_method(stub.impl, _HexagonService_methods[6], controller, inp)
+RepoDelHexagonInfoData(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexIDData, done::Function) = call_method(stub.impl, _HexagonService_methods[6], controller, inp, done)
+RepoDelHexagonInfoData(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexIDData) = call_method(stub.impl, _HexagonService_methods[6], controller, inp)
 
-MapRemove(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexLocationList, done::Function) = call_method(stub.impl, _HexagonService_methods[7], controller, inp, done)
-MapRemove(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexLocationList) = call_method(stub.impl, _HexagonService_methods[7], controller, inp)
+MapAdd(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexLocationList, done::Function) = call_method(stub.impl, _HexagonService_methods[7], controller, inp, done)
+MapAdd(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexLocationList) = call_method(stub.impl, _HexagonService_methods[7], controller, inp)
 
-GetStatusServer(stub::HexagonServiceStub, controller::ProtoRpcController, inp::Empty, done::Function) = call_method(stub.impl, _HexagonService_methods[8], controller, inp, done)
-GetStatusServer(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::Empty) = call_method(stub.impl, _HexagonService_methods[8], controller, inp)
+MapAddData(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexLocData, done::Function) = call_method(stub.impl, _HexagonService_methods[8], controller, inp, done)
+MapAddData(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexLocData) = call_method(stub.impl, _HexagonService_methods[8], controller, inp)
 
-GetStatusStorage(stub::HexagonServiceStub, controller::ProtoRpcController, inp::Empty, done::Function) = call_method(stub.impl, _HexagonService_methods[9], controller, inp, done)
-GetStatusStorage(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::Empty) = call_method(stub.impl, _HexagonService_methods[9], controller, inp)
+MapGet(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexagonGetRequest, done::Function) = call_method(stub.impl, _HexagonService_methods[9], controller, inp, done)
+MapGet(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexagonGetRequest) = call_method(stub.impl, _HexagonService_methods[9], controller, inp)
 
-GetStatusClients(stub::HexagonServiceStub, controller::ProtoRpcController, inp::Empty, done::Function) = call_method(stub.impl, _HexagonService_methods[10], controller, inp, done)
-GetStatusClients(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::Empty) = call_method(stub.impl, _HexagonService_methods[10], controller, inp)
+MapUpdate(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexLocation, done::Function) = call_method(stub.impl, _HexagonService_methods[10], controller, inp, done)
+MapUpdate(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexLocation) = call_method(stub.impl, _HexagonService_methods[10], controller, inp)
 
-export Direction, Empty, HexLocation, HexInfo, HexInfoList, HexLocationList, HexagonGetRequest, HexIDList, Status, Result, HexagonService, HexagonServiceStub, HexagonServiceBlockingStub, RepoAddHexagonInfo, RepoDelHexagonInfo, RepoGetHexagonInfo, RepoGetAllHexagonInfo, MapAdd, MapGet, MapRemove, GetStatusServer, GetStatusStorage, GetStatusClients
+MapUpdateData(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexLocation, done::Function) = call_method(stub.impl, _HexagonService_methods[11], controller, inp, done)
+MapUpdateData(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexLocation) = call_method(stub.impl, _HexagonService_methods[11], controller, inp)
+
+MapRemove(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexLocationList, done::Function) = call_method(stub.impl, _HexagonService_methods[12], controller, inp, done)
+MapRemove(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexLocationList) = call_method(stub.impl, _HexagonService_methods[12], controller, inp)
+
+MapRemoveData(stub::HexagonServiceStub, controller::ProtoRpcController, inp::HexLocation, done::Function) = call_method(stub.impl, _HexagonService_methods[13], controller, inp, done)
+MapRemoveData(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::HexLocation) = call_method(stub.impl, _HexagonService_methods[13], controller, inp)
+
+GetStatusServer(stub::HexagonServiceStub, controller::ProtoRpcController, inp::Empty, done::Function) = call_method(stub.impl, _HexagonService_methods[14], controller, inp, done)
+GetStatusServer(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::Empty) = call_method(stub.impl, _HexagonService_methods[14], controller, inp)
+
+GetStatusStorage(stub::HexagonServiceStub, controller::ProtoRpcController, inp::Empty, done::Function) = call_method(stub.impl, _HexagonService_methods[15], controller, inp, done)
+GetStatusStorage(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::Empty) = call_method(stub.impl, _HexagonService_methods[15], controller, inp)
+
+GetStatusClients(stub::HexagonServiceStub, controller::ProtoRpcController, inp::Empty, done::Function) = call_method(stub.impl, _HexagonService_methods[16], controller, inp, done)
+GetStatusClients(stub::HexagonServiceBlockingStub, controller::ProtoRpcController, inp::Empty) = call_method(stub.impl, _HexagonService_methods[16], controller, inp)
+
+export Empty, HexLocation_LocalDataEntry, HexLocation_GlobalDataEntry, HexLocation, HexInfo_DataEntry, HexInfo, HexInfoList, HexLocationList, HexagonGetRequest, HexIDList, HexIDData, HexLocData, Status, Result, HexagonService, HexagonServiceStub, HexagonServiceBlockingStub, RepoAddHexagonInfo, RepoGetHexagonInfo, RepoGetHexagonInfoData, RepoGetAllHexagonInfo, RepoDelHexagonInfo, RepoDelHexagonInfoData, MapAdd, MapAddData, MapGet, MapUpdate, MapUpdateData, MapRemove, MapRemoveData, GetStatusServer, GetStatusStorage, GetStatusClients
+# mapentries: "HexInfo_DataEntry" => ("AbstractString", "AbstractString"), "HexLocation_GlobalDataEntry" => ("AbstractString", "AbstractString"), "HexLocation_LocalDataEntry" => ("AbstractString", "AbstractString")
